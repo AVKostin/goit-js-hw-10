@@ -2,7 +2,7 @@
   "name": "home-work-goit-js-hw-10",
   "version": "1.1.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "homepage": "https://avkostin.github.io/goit-js-hw-10/",
   "scripts": {
     "dev": "parcel src/*.html",
