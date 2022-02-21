@@ -1,0 +1,15 @@
+{{#each this}}
+  <article class='card'>
+    <div class='wrapper'>
+      <img class='card__image' src={{flags.svg}} alt={{name.common}} width='80' height='60' />
+      <h2 class='title'>{{name.official}}</h2>
+    </div>
+    <div class='item-wrapper'>
+      <p class='item'>Capital: <span class='value'>{{capital}}</span></p>
+      <p class='item'>Population: <span class='value'>{{population}}</span></p>
+      <p class='item'>Languages:
+        <span class='value'>{{#each languages}}{{#if @last}}{{this}}{{else}}{{this}},{{/if}}
+          {{/each}}</span></p>
+    </div>
+  </article>
+{{/each}}
