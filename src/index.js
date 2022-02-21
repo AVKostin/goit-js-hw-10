@@ -16,8 +16,6 @@ Notiflix.Notify.init({
 	fontSize: '18px',
 });
 
-// let countryName = '';
-
 const onSearch = e => {
 	const countryName = e.target.value.trim();
 	if (countryName === '') {
