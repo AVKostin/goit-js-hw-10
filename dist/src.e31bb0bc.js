@@ -2841,8 +2841,7 @@ _notiflix.default.Notify.init({
   position: 'center-bottom',
   width: '400px',
   fontSize: '18px'
-}); // let countryName = '';
-
+});
 
 const onSearch = e => {
   const countryName = e.target.value.trim();
@@ -2910,7 +2909,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54673" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49891" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
