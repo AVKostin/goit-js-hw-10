@@ -11,7 +11,7 @@ const countriesInfoRef = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
 Notiflix.Notify.init({
-	position: 'center-bottom',
+	position: 'center-top',
 	width: '400px',
 	fontSize: '18px',
 });

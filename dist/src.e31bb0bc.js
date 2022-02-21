@@ -2838,7 +2838,7 @@ const countriesInfoRef = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
 _notiflix.default.Notify.init({
-  position: 'center-bottom',
+  position: 'center-top',
   width: '400px',
   fontSize: '18px'
 });
@@ -2909,7 +2909,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49891" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64899" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
