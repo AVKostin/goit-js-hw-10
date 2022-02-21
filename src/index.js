@@ -5,64 +5,59 @@ import markupCountryInfoTemplate from './hbs-templates/markup-country-info.hbs';
 import { fetchCountries } from './js/fetchCountries';
 import debounce from 'lodash.debounce';
 
-const searchInput = document.querySelector('#search-box');
-const countriesList = document.querySelector('.country-list');
-const countriesInfo = document.querySelector('.country-info');
+const searchInputRef = document.querySelector('#search-box');
+const countriesListRef = document.querySelector('.country-list');
+const countriesInfoRef = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
-searchInput.focus();
-
 Notiflix.Notify.init({
-	position: 'center-top',
+	position: 'center-bottom',
 	width: '400px',
 	fontSize: '18px',
 });
 
-let countryName = '';
+// let countryName = '';
 
 const onSearch = e => {
-	countryName = e.target.value.trim();
-
-	clearInput();
-	setCountries(countryName);
-	function setCountries(countryName) {
-		fetchCountries(countryName)
-			.then(data => {
-				const amount = data.length;
-				console.log(amount);
-				if (amount > 10) {
-					Notiflix.Notify.info(
-						'Найдено очень много стран. Пожалуйста, укажите более конкретное название.',
-					);
-					return;
-				}
-				if (amount >= 2 && amount <= 10) {
-					renderCountriesMarkup(data);
-				} else {
-					renderCountriesInfoMarkup(data);
-				}
-			})
-			.catch(onFetchError);
+	const countryName = e.target.value.trim();
+	if (countryName === '') {
+		clearInput();
+		return;
 	}
+	fetchCountries(countryName)
+		.then(data => {
+			const amount = data.length;
+			if (data.length > 10)
+				return Notiflix.Notify.info(
+					'Найдено очень много стран. Пожалуйста, укажите более конкретное название.',
+				);
+			if (amount > 1) return renderCountriesMarkup(data);
+			renderCountriesInfoMarkup(data);
+		})
+		.catch(error => {
+			clearInput();
+			return Notiflix.Notify.failure('Oops, нет страны с таким именем');
+		});
 };
 
-function onFetchError(error) {
-	if (countryName !== '') {
-		Notiflix.Notify.failure('Oops, нет страны с таким именем');
-	}
+function renderCountriesInfoMarkup(country) {
+	const markup = markupCountryInfoTemplate(country);
+
+	countriesListRef.innerHTML = '';
+	countriesInfoRef.innerHTML = markup;
+	searchInputRef.value = '';
 }
 
-function renderCountriesMarkup(data) {
-	countriesList.insertAdjacentHTML('beforeend', markupCountryListTemplate(data));
-}
+function renderCountriesMarkup(list) {
+	const markup = markupCountryListTemplate(list);
 
-function renderCountriesInfoMarkup(data) {
-	countriesInfo.insertAdjacentHTML('beforeend', markupCountryInfoTemplate(data));
+	countriesInfoRef.innerHTML = '';
+	countriesListRef.innerHTML = markup;
 }
 
 function clearInput() {
-	countriesList.innerHTML = '';
-	countriesInfo.innerHTML = '';
+	countriesInfoRef.innerHTML = '';
+	countriesListRef.innerHTML = '';
 }
 
-searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
+searchInputRef.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
