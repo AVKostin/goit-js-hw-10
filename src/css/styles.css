@@ -33,7 +33,6 @@ body {
 
 .find-country {
 	margin-top: 120px;
-
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -47,6 +46,7 @@ ul {
 li {
 	list-style: none;
 }
+
 h2 {
 	font-weight: 900;
 	line-height: 1.1;
@@ -71,6 +71,7 @@ p.item {
 	align-items: center;
 	width: 580px;
 }
+
 .list_item {
 	background-color: #ffe4f5;
 	display: flex;
@@ -88,6 +89,7 @@ p.item {
 	font-size: 22px;
 	color: #212121;
 }
+
 .item-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -103,9 +105,11 @@ p.item {
 	padding: 20px;
 	margin: 20px;
 }
+
 .card__image {
 	margin-right: 15px;
 }
+
 .country-list {
 	max-width: 468px;
 	display: flex;
@@ -122,6 +126,7 @@ p.item {
 	display: flex;
 	align-items: center;
 }
+
 .title {
 	font-size: 40px;
 }
